@@ -1,0 +1,5 @@
+output/*.docx
+output/*.pdf
+node_modules/
+.DS_Store
+*.log
