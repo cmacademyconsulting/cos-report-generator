@@ -3,1381 +3,825 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COS™ Report Generator — CM Academy</title>
+<title>Susil Bhandari, CCM | COS™ Methodology | CM Academy</title>
+<meta name="description" content="COS™ Methodology — Ethics-First Construction Governance. Compliance · Oversight · Sustainability. Mandatory compliance reports for ADB, World Bank, GCC, and ESG requirements. By Susil Bhandari, CCM.">
+<meta name="keywords" content="construction management, CCM, compliance reports, OSH, ESG, ADB, World Bank, Nepal, Qatar, Bahrain, COS methodology, governance">
+<meta property="og:title" content="Susil Bhandari, CCM | COS™ Methodology">
+<meta property="og:description" content="Ethics-First Construction Governance Reports. ADB, World Bank, GCC OSH, ESG compliance.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ── RESET & VARIABLES ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
 :root {
-  --navy:   #1F3864;
-  --gold:   #C9A84C;
-  --gold-l: #E8C96A;
-  --amber:  #E07B00;
-  --white:  #F7F4EE;
-  --offwt:  #EDE9E0;
-  --grey:   #8A8578;
-  --dark:   #0E1B2E;
-  --darker: #080F1A;
-  --green:  #1E6B3C;
-  --red:    #9B1C1C;
-  --card:   rgba(31,56,100,0.18);
-  --border: rgba(201,168,76,0.25);
-  --glow:   rgba(201,168,76,0.12);
+  --navy:    #1F3864;
+  --gold:    #C9A84C;
+  --gold-l:  #E8C96A;
+  --white:   #F7F4EE;
+  --offwt:   #EDE9E0;
+  --grey:    #7A7468;
+  --dark:    #0E1B2E;
+  --darker:  #07100D;
+  --green:   #1E6B3C;
+  --amber:   #E07B00;
+  --red:     #9B1C1C;
+  --border:  rgba(201,168,76,0.22);
+  --glow:    rgba(201,168,76,0.10);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
 body {
-  background: var(--darker);
+  background: var(--dark);
   color: var(--white);
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* ── BACKGROUND TEXTURE ── */
+/* ── BACKGROUND ──────────────────────────────────────────────────── */
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(31,56,100,0.4) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 55%),
-    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
-    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
-  pointer-events: none;
-  z-index: 0;
+    radial-gradient(ellipse 70% 50% at 15% 10%, rgba(31,56,100,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 85%, rgba(201,168,76,0.07) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px),
+    repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px);
 }
 
-/* ── HEADER ── */
+/* ── HEADER ──────────────────────────────────────────────────────── */
 header {
-  position: relative;
-  z-index: 10;
-  padding: 3rem 4rem 2.5rem;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.1rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(7,16,13,0.85);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  backdrop-filter: blur(8px);
-  background: rgba(8,15,26,0.6);
 }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; }
+.logo span { color: var(--gold); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.2s; }
+nav a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--dark) !important; padding: 0.5rem 1.2rem; font-weight: 500; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--gold-l) !important; }
 
-.logo-block { display: flex; flex-direction: column; gap: 0.2rem; }
-
-.logo-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  color: var(--white);
-}
-
-.logo-tagline {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  text-transform: uppercase;
-}
-
-.header-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
-}
-
-.cos-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  color: var(--gold);
-  border: 1px solid var(--border);
-  padding: 0.3rem 0.8rem;
-  text-transform: uppercase;
-}
-
-.doi-link {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--grey);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
-}
-.doi-link:hover { color: var(--gold); }
-
-/* ── HERO ── */
+/* ── HERO ────────────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  z-index: 10;
-  padding: 5rem 4rem 4rem;
+  position: relative; z-index: 10;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 5rem 5rem;
   max-width: 1100px;
 }
-
-.hero-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem;
 }
-
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--gold);
+.eyebrow::before { content: ''; display: block; width: 2.5rem; height: 1px; background: var(--gold); }
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700; line-height: 1.04;
+  color: var(--white); margin-bottom: 1.8rem;
 }
-
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--white);
-  margin-bottom: 1.5rem;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--gold);
-}
-
+h1 em { font-style: italic; color: var(--gold); }
 .hero-sub {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--grey);
-  max-width: 540px;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
+  font-size: 1.1rem; font-weight: 300; color: var(--grey);
+  max-width: 520px; line-height: 1.75; margin-bottom: 2.8rem;
 }
-
-/* ── REPORT CARDS ── */
-.reports-grid {
-  position: relative;
-  z-index: 10;
-  padding: 0 4rem 5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  max-width: 1100px;
-  margin: 0 auto 5rem;
-}
-
-.report-card {
-  background: var(--darker);
-  padding: 2rem 1.8rem;
-  cursor: pointer;
-  transition: background 0.25s, transform 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-
-.report-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.report-card:hover { background: rgba(31,56,100,0.35); }
-.report-card:hover::before { transform: scaleX(1); }
-
-.report-card.active {
-  background: rgba(31,56,100,0.5);
-  border-left: 2px solid var(--gold);
-}
-.report-card.active::before { transform: scaleX(1); }
-
-.card-number {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  margin-bottom: 0.8rem;
-}
-
-.card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.card-desc {
-  font-size: 0.78rem;
-  color: var(--grey);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.card-price {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--gold);
-  letter-spacing: 0.08em;
-}
-
-/* ── FORM SECTION ── */
-.form-section {
-  position: relative;
-  z-index: 10;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 4rem 6rem;
-}
-
-.form-header {
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.form-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-}
-
-.form-header p {
-  font-size: 0.88rem;
-  color: var(--grey);
-  font-weight: 300;
-}
-
-/* ── FORM PANELS ── */
-.form-panel {
-  display: none;
-  animation: panelIn 0.4s ease;
-}
-
-.form-panel.active { display: block; }
-
-@keyframes panelIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── FIELDSETS ── */
-.fieldset {
-  margin-bottom: 2.5rem;
-}
-
-.fieldset-legend {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.fieldset-legend::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-.form-grid.full   { grid-template-columns: 1fr; }
-
-.field { display: flex; flex-direction: column; gap: 0.45rem; }
-
-.field label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  color: var(--grey);
-  text-transform: uppercase;
-}
-
-.field input,
-.field textarea,
-.field select {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201,168,76,0.2);
-  color: var(--white);
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 300;
-  padding: 0.7rem 0.9rem;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  width: 100%;
-  border-radius: 0;
-  -webkit-appearance: none;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus {
-  border-color: var(--gold);
-  background: rgba(201,168,76,0.06);
-}
-
-.field textarea { min-height: 90px; resize: vertical; }
-
-.field select option { background: var(--dark); color: var(--white); }
-
-/* ── SCORE SLIDERS ── */
-.score-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.score-item { display: flex; flex-direction: column; gap: 0.6rem; }
-
-.score-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.score-label .pillar-c { color: var(--green); }
-.score-label .pillar-o { color: #4A9ECC; }
-.score-label .pillar-s { color: var(--gold); }
-
-.score-val {
-  font-family: 'DM Mono', monospace;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-input[type=range] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 3px;
-  background: rgba(255,255,255,0.1);
-  outline: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 0 8px rgba(201,168,76,0.5);
-}
-
-.score-bar {
-  height: 3px;
-  background: rgba(255,255,255,0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.score-fill {
-  height: 100%;
-  transition: width 0.2s;
-}
-
-/* ── CHECKLIST ── */
-.checklist-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.check-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  align-items: center;
-  padding: 0.7rem 1rem;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: border-color 0.2s;
-}
-
-.check-item:hover { border-color: var(--border); }
-
-.check-text {
-  font-size: 0.82rem;
-  color: var(--grey);
-  line-height: 1.4;
-}
-
-.check-ref {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  color: rgba(201,168,76,0.5);
-  white-space: nowrap;
-}
-
-.status-select {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  padding: 0.3rem 0.5rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white);
-  cursor: pointer;
-  outline: none;
-  min-width: 90px;
-}
-
-.status-select.pass  { border-color: rgba(30,107,60,0.6); background: rgba(30,107,60,0.15); color: #6FCF97; }
-.status-select.fail  { border-color: rgba(155,28,28,0.6); background: rgba(155,28,28,0.15); color: #F87171; }
-.status-select.obs   { border-color: rgba(224,123,0,0.6); background: rgba(224,123,0,0.15); color: var(--amber); }
-.status-select.na    { border-color: rgba(138,133,120,0.4); color: var(--grey); }
-
-/* ── BUTTONS ── */
-.btn-row {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-  align-items: center;
-}
-
-.btn {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0.9rem 2rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-primary {
-  background: var(--gold);
-  color: var(--darker);
-  font-weight: 500;
-}
-
-.btn-primary:hover {
-  background: var(--gold-l);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(201,168,76,0.3);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--grey);
-  border: 1px solid rgba(255,255,255,0.12);
-}
-
-.btn-secondary:hover {
-  color: var(--white);
-  border-color: rgba(255,255,255,0.3);
-}
-
-.btn-generate {
-  background: var(--navy);
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  font-weight: 500;
-  padding: 0.9rem 2.5rem;
-}
-
-.btn-generate:hover {
-  background: var(--gold);
-  color: var(--darker);
-  box-shadow: 0 6px 24px rgba(201,168,76,0.25);
-}
-
-/* ── OUTPUT PREVIEW ── */
-.output-panel {
-  display: none;
-  position: relative;
-  z-index: 10;
-  max-width: 960px;
-  margin: 0 auto 5rem;
-  padding: 0 4rem;
-  animation: panelIn 0.5s ease;
-}
-
-.output-panel.visible { display: block; }
-
-.output-card {
-  border: 1px solid var(--gold);
-  background: rgba(31,56,100,0.2);
-  padding: 3rem;
-  position: relative;
-}
-
-.output-card::before {
-  content: 'GENERATED';
-  position: absolute;
-  top: -0.6rem;
-  left: 2rem;
-  background: var(--darker);
-  padding: 0 0.8rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-}
-
-.output-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-}
-
-.output-ref {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--gold);
-  letter-spacing: 0.12em;
-  margin-bottom: 2rem;
-}
-
-.output-scores {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  margin-bottom: 2rem;
-}
-
-.score-cell {
-  background: var(--darker);
-  padding: 1.5rem 1rem;
-  text-align: center;
-}
-
-.score-big {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.score-lbl {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.output-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  margin-bottom: 2rem;
-}
-
-.meta-row {
-  display: flex;
-  gap: 0.8rem;
-  font-size: 0.82rem;
-  color: var(--grey);
-}
-
-.meta-row strong {
-  color: var(--white);
-  font-weight: 500;
-  min-width: 120px;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-}
-
-.download-btns {
-  display: flex;
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-}
-
-/* ── PROGRESS BAR ── */
-.gen-progress {
-  display: none;
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  background: rgba(31,56,100,0.2);
-  border: 1px solid var(--border);
-}
-
-.gen-progress.visible { display: block; }
-
-.progress-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  margin-bottom: 0.8rem;
-}
-
-.progress-bar-track {
-  height: 2px;
-  background: rgba(255,255,255,0.08);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: var(--gold);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-
-.progress-steps {
-  margin-top: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.progress-step {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--grey);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.progress-step.done {
-  opacity: 1;
-  color: var(--green);
-}
-
-.progress-step.done::before { content: '✓  '; }
-
-/* ── PILLS / TAGS ── */
-.pillar-pills {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
+.pill-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
 .pill {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid;
-  text-transform: uppercase;
+  font-family: 'DM Mono', monospace; font-size: 0.6rem;
+  letter-spacing: 0.12em; padding: 0.3rem 0.75rem;
+  border: 1px solid; text-transform: uppercase;
 }
-
 .pill-c { border-color: var(--green); color: #6FCF97; }
 .pill-o { border-color: #4A9ECC; color: #4A9ECC; }
 .pill-s { border-color: var(--gold); color: var(--gold); }
+.pill-x { border-color: rgba(255,255,255,0.15); color: var(--grey); }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border: none; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--gold); color: var(--dark); font-weight: 500; }
+.btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.3); }
+.btn-outline { background: transparent; color: var(--grey); border: 1px solid rgba(255,255,255,0.15); }
+.btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
 
-/* ── FOOTER ── */
-footer {
-  position: relative;
-  z-index: 10;
+/* ── STATS STRIP ─────────────────────────────────────────────────── */
+.stats {
+  position: relative; z-index: 10;
   border-top: 1px solid var(--border);
-  padding: 2.5rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: rgba(31,56,100,0.08);
   backdrop-filter: blur(4px);
-  background: rgba(8,15,26,0.4);
 }
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+.stat {
+  padding: 2rem 2.5rem;
+  border-right: 1px solid var(--border);
 }
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); }
 
-.footer-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
+/* ── SECTIONS ────────────────────────────────────────────────────── */
+section { position: relative; z-index: 10; padding: 6rem 5rem; }
+.section-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+.section-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--gold); }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--white); margin-bottom: 1rem; line-height: 1.15; }
+.section-sub { font-size: 1rem; color: var(--grey); max-width: 540px; line-height: 1.7; margin-bottom: 3rem; }
+
+/* ── REPORTS GRID ────────────────────────────────────────────────── */
+.reports-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--border); gap: 1px; background: var(--border);
+  max-width: 1000px;
 }
-
-.footer-creds {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--grey);
-  letter-spacing: 0.08em;
-  line-height: 1.8;
+.report-card {
+  background: var(--dark); padding: 2rem 1.8rem;
+  position: relative; overflow: hidden; transition: background 0.25s;
 }
+.report-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.report-card:hover { background: rgba(31,56,100,0.4); }
+.report-card:hover::before { transform: scaleX(1); }
+.card-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.7rem; }
+.card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.3; }
+.card-desc { font-size: 0.78rem; color: var(--grey); line-height: 1.6; margin-bottom: 1rem; }
+.card-price { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.08em; }
 
-.footer-right {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+/* ── PROBLEM SECTION ─────────────────────────────────────────────── */
+.problem-section { background: rgba(31,56,100,0.08); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stat-box {
+  background: rgba(7,16,13,0.6); border: 1px solid var(--border);
+  padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem;
 }
+.big-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: var(--red); line-height: 1; }
+.big-label { font-size: 0.82rem; color: var(--grey); line-height: 1.5; }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; max-width: 900px; margin-top: 2rem; }
 
-.footer-copy {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--grey);
-  letter-spacing: 0.08em;
+/* ── HOW IT WORKS ────────────────────────────────────────────────── */
+.steps { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.step { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+.step:last-child { border-bottom: none; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--border); line-height: 1; padding-top: 0.2rem; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+.step-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.65; }
+.step-time { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--gold); margin-top: 0.5rem; }
+
+/* ── MARKETS ─────────────────────────────────────────────────────── */
+.markets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); border: 1px solid var(--border); max-width: 900px; }
+.market-card { background: var(--dark); padding: 2rem; }
+.market-flag { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.market-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+.market-desc { font-size: 0.8rem; color: var(--grey); line-height: 1.6; }
+.market-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--gold); letter-spacing: 0.1em; margin-top: 0.8rem; }
+
+/* ── LEAD CAPTURE ────────────────────────────────────────────────── */
+.lead-section {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
+.lead-inner { max-width: 600px; }
+.lead-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.25);
+  color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+  font-weight: 300; padding: 0.75rem 1rem; outline: none; border-radius: 0;
+  -webkit-appearance: none; width: 100%; transition: border-color 0.2s, background 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+.field select option { background: var(--dark); color: var(--white); }
+.field textarea { min-height: 80px; resize: vertical; }
+.form-note { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; margin-top: 0.5rem; }
+#form-success { display: none; padding: 1.5rem; background: rgba(30,107,60,0.2); border: 1px solid rgba(30,107,60,0.5); }
+#form-success p { color: #6FCF97; font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; }
 
-/* ── RESPONSIVE ── */
+/* ── ABOUT ───────────────────────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.cred-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+.cred { display: flex; gap: 1rem; align-items: flex-start; }
+.cred-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--gold); border: 1px solid var(--border); padding: 0.25rem 0.6rem; white-space: nowrap; margin-top: 0.1rem; }
+.cred-text { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
+.quote-block { border-left: 3px solid var(--gold); padding-left: 1.5rem; margin-top: 2rem; }
+.quote-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--white); line-height: 1.5; margin-bottom: 0.5rem; }
+.quote-attr { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold); letter-spacing: 0.1em; }
+
+/* ── CHAT WIDGET ─────────────────────────────────────────────────── */
+#chat-toggle {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gold); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+  transition: all 0.25s; font-size: 1.4rem;
+}
+#chat-toggle:hover { background: var(--gold-l); transform: scale(1.08); }
+
+#chat-window {
+  position: fixed; bottom: 5.5rem; right: 2rem; z-index: 999;
+  width: 360px; max-height: 520px;
+  background: var(--darker); border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transform: scale(0.9) translateY(20px); opacity: 0;
+  pointer-events: none; transition: all 0.3s ease;
+  transform-origin: bottom right;
+}
+#chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+.chat-header {
+  background: var(--navy); padding: 1rem 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.chat-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--dark); flex-shrink: 0; }
+.chat-info { flex: 1; }
+.chat-name { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--white); font-weight: 500; }
+.chat-status { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6FCF97; letter-spacing: 0.06em; }
+#chat-close { background: none; border: none; color: var(--grey); cursor: pointer; font-size: 1.1rem; padding: 0.2rem; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; scroll-behavior: smooth; }
+.chat-messages::-webkit-scrollbar { width: 3px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--border); }
+.msg { max-width: 85%; padding: 0.65rem 0.9rem; font-size: 0.82rem; line-height: 1.55; }
+.msg-bot { background: rgba(31,56,100,0.5); border: 1px solid rgba(31,56,100,0.8); color: var(--white); align-self: flex-start; }
+.msg-user { background: var(--gold); color: var(--dark); font-weight: 500; align-self: flex-end; }
+.msg-time { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: var(--grey); margin-top: 0.3rem; letter-spacing: 0.05em; }
+.chat-typing { display: none; align-self: flex-start; padding: 0.65rem 0.9rem; background: rgba(31,56,100,0.5); border: 1px solid rgba(31,56,100,0.8); }
+.chat-typing.visible { display: flex; gap: 0.3rem; align-items: center; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: bounce 1.2s infinite; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+.quick-replies { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 1rem; border-top: 1px solid var(--border); }
+.qr { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; padding: 0.35rem 0.7rem; background: transparent; border: 1px solid var(--border); color: var(--gold); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.qr:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+.chat-input-area { padding: 0.8rem; border-top: 1px solid var(--border); display: flex; gap: 0.5rem; }
+#chat-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.82rem; padding: 0.55rem 0.8rem; outline: none; }
+#chat-input:focus { border-color: var(--gold); }
+#chat-send { background: var(--gold); border: none; color: var(--dark); padding: 0.55rem 0.9rem; cursor: pointer; font-size: 0.9rem; transition: background 0.2s; }
+#chat-send:hover { background: var(--gold-l); }
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+footer {
+  position: relative; z-index: 10;
+  border-top: 1px solid var(--border);
+  padding: 3rem 5rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  background: rgba(7,16,13,0.4);
+}
+.footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
+.footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+.footer-cred { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--grey); letter-spacing: 0.08em; line-height: 1.9; }
+.footer-right { text-align: right; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--grey); letter-spacing: 0.06em; line-height: 1.9; }
+.footer-doi { color: var(--gold); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  header, .hero, .form-section, .output-panel { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .reports-grid { grid-template-columns: 1fr 1fr; padding: 0 1.5rem; }
-  .form-grid { grid-template-columns: 1fr; }
-  .form-grid.cols-3 { grid-template-columns: 1fr; }
-  .score-group { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
-  .output-scores { grid-template-columns: 1fr 1fr; }
-  .output-meta { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 600px) {
+  header { padding: 1rem 1.5rem; }
+  nav { gap: 1rem; }
+  nav a:not(.nav-cta) { display: none; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  section { padding: 4rem 1.5rem; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
   .reports-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: 2rem; }
-  .download-btns { flex-direction: column; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .markets-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  #chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
+  #chat-toggle { right: 1rem; bottom: 1rem; }
 }
-
-/* ── UTILITY ── */
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-.mt-sm { margin-top: 0.8rem; }
-.text-gold { color: var(--gold); }
-.text-grey { color: var(--grey); font-size: 0.8rem; }
-.mono { font-family: 'DM Mono', monospace; }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<!-- ── HEADER ─────────────────────────────────────────────────────── -->
 <header>
-  <div class="logo-block">
-    <div class="logo-name">CM ACADEMY</div>
-    <div class="logo-tagline">Developed in Nepal. Leading the World.™</div>
-  </div>
-  <div class="header-right">
-    <div class="cos-badge">COS™ Methodology</div>
-    <a href="https://doi.org/10.5281/zenodo.18802971" target="_blank" class="doi-link">DOI: 10.5281/zenodo.18802971</a>
-  </div>
+  <div class="logo">CM <span>ACADEMY</span></div>
+  <nav>
+    <a href="#reports">Reports</a>
+    <a href="#how">How It Works</a>
+    <a href="#markets">Markets</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta btn">Get a Report</a>
+  </nav>
 </header>
 
-<!-- ── HERO ── -->
+<!-- ── HERO ───────────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-eyebrow">COS™ Report Generator</div>
-  <h1 class="hero-title">
-    Ethics-First<br>
-    <em>Construction Management</em><br>
-    Reports
+  <div class="eyebrow">COS™ Methodology — Ethics-First Governance</div>
+  <h1>
+    Construction compliance<br>
+    reports that <em>actually<br>
+    protect workers.</em>
   </h1>
   <p class="hero-sub">
-    Generate fully-branded, audit-ready governance reports using the 
-    COS™ Methodology — Compliance · Oversight · Sustainability — 
-    validated across Nepal, Bahrain, and Qatar over 22 years of practice.
+    Professional mandatory compliance reports for ADB, World Bank, GCC, and ESG requirements.
+    Generated in 24 hours. Anchored to a published methodology.
+    Signed by a Certified Construction Manager.
   </p>
-  <div class="pillar-pills">
+  <div class="pill-row">
     <span class="pill pill-c">C — Compliance</span>
     <span class="pill pill-o">O — Oversight</span>
     <span class="pill pill-s">S — Sustainability</span>
-    <span class="pill" style="border-color:rgba(255,255,255,0.15);color:var(--grey)">CMAA · FIDIC · ISO · IFC · GCF · SDGs · GRI · TCFD</span>
+    <span class="pill pill-x">ADB · World Bank · GCC · CSRD · OSHA</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#contact" class="btn btn-primary">▶ Request a Report</a>
+    <a href="https://zenodo.org/records/18802971" target="_blank" class="btn btn-outline">Read the White Paper →</a>
   </div>
 </section>
 
-<!-- ── REPORT TYPE SELECTOR ── -->
-<div class="reports-grid">
-  <div class="report-card active" onclick="selectReport(0)" id="card-0">
-    <div class="card-number">01 / 06</div>
-    <div class="card-title">QA/QC Site Audit Report</div>
-    <div class="card-desc">Daily quality control, material compliance, survey verification, NCR status. Anchored to ISO 9001, CMAA, FIDIC.</div>
-    <div class="card-price">$500 – $1,500</div>
+<!-- ── STATS ───────────────────────────────────────────────────────── -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Report Types — all mandatory requirements</div>
   </div>
-  <div class="report-card" onclick="selectReport(1)" id="card-1">
-    <div class="card-number">02 / 06</div>
-    <div class="card-title">OSH Field Audit Report</div>
-    <div class="card-desc">PPE compliance, site safety, incident register, corrective action plan. ISO 45001, OSHA, ILO conventions.</div>
-    <div class="card-price">$500 – $1,500</div>
+  <div class="stat">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">Turnaround — data in, report out</div>
   </div>
-  <div class="report-card" onclick="selectReport(2)" id="card-2">
-    <div class="card-number">03 / 06</div>
-    <div class="card-title">NCR Register & CAPA</div>
-    <div class="card-desc">Full non-conformance register with root cause analysis, corrective and preventive actions, closure tracking.</div>
-    <div class="card-price">$500 – $1,000</div>
+  <div class="stat">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Years field experience — Nepal, Qatar, Bahrain</div>
   </div>
-  <div class="report-card" onclick="selectReport(3)" id="card-3">
-    <div class="card-number">04 / 06</div>
-    <div class="card-title">Project Governance Assessment</div>
-    <div class="card-desc">10-domain governance health check: contract admin, FM, risk, change management, sustainability gov.</div>
-    <div class="card-price">$1,500 – $3,000</div>
-  </div>
-  <div class="report-card" onclick="selectReport(4)" id="card-4">
-    <div class="card-number">05 / 06</div>
-    <div class="card-title">ESG Alignment Report</div>
-    <div class="card-desc">GRI disclosures, TCFD 4-pillar, IFC PS compliance, UN SDG mapping, GHG emissions. For lenders and donors.</div>
-    <div class="card-price">$1,000 – $2,500</div>
-  </div>
-  <div class="report-card" onclick="selectReport(5)" id="card-5">
-    <div class="card-number">06 / 06</div>
-    <div class="card-title">Donor Readiness Report</div>
-    <div class="card-desc">Pre-mission governance readiness for ADB, World Bank, UN supervision missions and mid-term reviews.</div>
-    <div class="card-price">$1,500 – $2,500</div>
+  <div class="stat">
+    <div class="stat-num">CCM</div>
+    <div class="stat-label">CMAA-USA — globally recognised credential</div>
   </div>
 </div>
 
-<!-- ── FORM ── -->
-<section class="form-section">
-
-  <div class="form-header">
-    <h2 id="form-title">QA/QC Site Audit Report</h2>
-    <p id="form-desc">Enter project details below. All fields marked with the COS™ methodology will be auto-populated in the generated report.</p>
-  </div>
-
-  <!-- PANEL 0: QA/QC -->
-  <div class="form-panel active" id="panel-0">
-    <div class="fieldset">
-      <div class="fieldset-legend">Project Information</div>
-      <div class="form-grid">
-        <div class="field"><label>Project Name</label><input type="text" id="p0-projname" placeholder="e.g. Kathmandu Ring Road Improvement Phase II" value="Road Infrastructure Rehabilitation Project — Phase II"></div>
-        <div class="field"><label>Project Code</label><input type="text" id="p0-projcode" placeholder="e.g. DOA-2026-RD-047" value="NEA-2026-RD-047"></div>
-        <div class="field"><label>Client / Owner</label><input type="text" id="p0-client" placeholder="e.g. Department of Roads, GoN" value="Department of Roads, Government of Nepal"></div>
-        <div class="field"><label>Contractor</label><input type="text" id="p0-contractor" placeholder="e.g. Nepal Construction Co. Pvt. Ltd." value="Nepal Construction Co. Pvt. Ltd."></div>
-        <div class="field"><label>Project Location</label><input type="text" id="p0-location" placeholder="e.g. Kathmandu–Hetauda Fast Track, Section 3" value="Kathmandu–Hetauda Fast Track, Section 3"></div>
-        <div class="field"><label>Contract No.</label><input type="text" id="p0-contract" placeholder="e.g. DoR/NCB/2026/047" value="DoR/NCB/2026/047"></div>
-        <div class="field"><label>Audit Date</label><input type="text" id="p0-date" placeholder="DD Month YYYY" value="09 March 2026"></div>
-        <div class="field"><label>Audit Reference</label><input type="text" id="p0-ref" placeholder="e.g. COS-QA-2026-047-001" value="COS-QA-2026-047-001"></div>
-      </div>
+<!-- ── PROBLEM ─────────────────────────────────────────────────────── -->
+<section class="problem-section">
+  <div class="section-eyebrow">The Problem We Solve</div>
+  <h2>Compliance reports that<br>exist on paper, fail in practice.</h2>
+  <p class="section-sub">Every 10 minutes, a construction worker dies somewhere in the world — often on a project where compliance reports are filed regularly. The reports exist. The deaths happen anyway. Because compliance is treated as a checkbox, not a protection.</p>
+  <div class="problem-grid">
+    <div class="stat-box">
+      <div class="big-num">60K</div>
+      <div class="big-label">Fatal construction site accidents every year globally — one every 10 minutes. (ILO)</div>
     </div>
-
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c0">82%</span></div>
-          <input type="range" min="0" max="100" value="82" oninput="updateScore('c0',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o0">74%</span></div>
-          <input type="range" min="0" max="100" value="74" oninput="updateScore('o0',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s0">68%</span></div>
-          <input type="range" min="0" max="100" value="68" oninput="updateScore('s0',this.value)">
-        </div>
-      </div>
+    <div class="stat-box">
+      <div class="big-num">50K</div>
+      <div class="big-label">Companies now required to file mandatory ESG reports under EU CSRD — by 2025.</div>
     </div>
-
-    <div class="fieldset">
-      <div class="fieldset-legend">Key Audit Findings</div>
-      <div class="form-grid full">
-        <div class="field"><label>Executive Summary</label><textarea id="p0-summary" placeholder="Describe the overall audit findings, key strengths and issues identified...">This COS™ QA/QC Site Audit was conducted on 09 March 2026. The overall project compliance stands at 75% (PARTIAL). Key strengths include ISO-aligned material certification procedures. Immediate action required on 3 outstanding NCRs and incomplete survey records.</textarea></div>
-        <div class="field mt-sm"><label>Critical Findings (one per line)</label><textarea id="p0-critical" placeholder="Each line = one critical finding">3 NCRs overdue beyond 14-day closure deadline — escalation required
-Survey benchmark records incomplete for chainage 12+400 to 13+200
-Carbon emission log absent from Environmental Management Plan</textarea></div>
-      </div>
-    </div>
-
-    <div class="fieldset">
-      <div class="fieldset-legend">QA/QC Checklist Status</div>
-      <p class="text-grey" style="margin-bottom:1rem">Set the compliance status for each checklist item:</p>
-      <div class="checklist-grid" id="checklist-0"></div>
+    <div class="stat-box">
+      <div class="big-num">$0</div>
+      <div class="big-label">Value of a compliance report that is filled backwards to get approval — and ignored on site.</div>
     </div>
   </div>
+</section>
 
-  <!-- PANEL 1: OSH -->
-  <div class="form-panel" id="panel-1">
-    <div class="fieldset">
-      <div class="fieldset-legend">Project Information</div>
-      <div class="form-grid">
-        <div class="field"><label>Project Name</label><input type="text" placeholder="e.g. Kathmandu Ring Road Improvement Phase III" value="Kathmandu Ring Road Improvement Project — Phase III"></div>
-        <div class="field"><label>Client / Owner</label><input type="text" placeholder="e.g. Department of Roads" value="Department of Roads, Government of Nepal"></div>
-        <div class="field"><label>Contractor</label><input type="text" placeholder="e.g. Himalayan Infrastructure Pvt. Ltd." value="Himalayan Infrastructure Pvt. Ltd."></div>
-        <div class="field"><label>Workers On Site</label><input type="text" placeholder="e.g. 147" value="147"></div>
-        <div class="field"><label>Audit Date</label><input type="text" placeholder="DD Month YYYY" value="09 March 2026"></div>
-        <div class="field"><label>Audit Reference</label><input type="text" placeholder="e.g. COS-OSH-2026-012-001" value="COS-OSH-2026-012-001"></div>
-      </div>
+<!-- ── REPORTS ─────────────────────────────────────────────────────── -->
+<section id="reports">
+  <div class="section-eyebrow">The Report Suite</div>
+  <h2>Six mandatory report types.<br>All generated in 24 hours.</h2>
+  <p class="section-sub">Fill a plain-language data form. We generate a professionally branded, CMAA-anchored, DOI-cited compliance report and deliver it to your inbox.</p>
+  <div class="reports-grid">
+    <div class="report-card">
+      <div class="card-num">01 / 06</div>
+      <div class="card-title">QA/QC Site Audit Report</div>
+      <div class="card-desc">Material compliance, inspection records, NCR status. ISO 9001 · FIDIC · CMAA. Required before every payment certificate.</div>
+      <div class="card-price">$500 – $1,500</div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c1">71%</span></div>
-          <input type="range" min="0" max="100" value="71" oninput="updateScore('c1',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o1">68%</span></div>
-          <input type="range" min="0" max="100" value="68" oninput="updateScore('o1',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s1">74%</span></div>
-          <input type="range" min="0" max="100" value="74" oninput="updateScore('s1',this.value)">
-        </div>
-      </div>
+    <div class="report-card">
+      <div class="card-num">02 / 06</div>
+      <div class="card-title">OSH Field Audit Report</div>
+      <div class="card-desc">Worker safety, PPE compliance, incident register, corrective actions. ISO 45001 · ILO · GCC Labour Law. Monthly mandatory.</div>
+      <div class="card-price">$500 – $1,500</div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">Critical Findings</div>
-      <div class="form-grid full">
-        <div class="field"><label>Executive Summary</label><textarea placeholder="Overall OSH audit findings...">OSH audit conducted 09 March 2026. 147 workers on site. Overall compliance 71% — PARTIAL. Two critical findings require immediate action: excavation edge protection failure and missing emergency evacuation plan.</textarea></div>
-        <div class="field mt-sm"><label>Critical Findings (one per line)</label><textarea placeholder="Critical safety findings">CRITICAL — Excavation at Ch. 2+400: No edge protection. Stop-work required.
-CRITICAL — Emergency Evacuation Plan not posted at site office.
-HIGH — Night-shift workers without reflective vests in active traffic zone.</textarea></div>
-      </div>
+    <div class="report-card">
+      <div class="card-num">03 / 06</div>
+      <div class="card-title">NCR Register & CAPA</div>
+      <div class="card-desc">Non-conformance register with root cause analysis and corrective/preventive actions. Required before work restarts.</div>
+      <div class="card-price">$500 – $1,000</div>
+    </div>
+    <div class="report-card">
+      <div class="card-num">04 / 06</div>
+      <div class="card-title">Project Governance Assessment</div>
+      <div class="card-desc">10-domain governance health check. Contract admin, risk, financial controls, sustainability. For ADB, World Bank, donors.</div>
+      <div class="card-price">$1,500 – $3,000</div>
+    </div>
+    <div class="report-card">
+      <div class="card-num">05 / 06</div>
+      <div class="card-title">ESG Alignment Report</div>
+      <div class="card-desc">GRI · TCFD · IFC PS · UN SDGs · ISSB IFRS S2. For lenders, donors, and mandatory ESG disclosure requirements.</div>
+      <div class="card-price">$1,000 – $2,500</div>
+    </div>
+    <div class="report-card">
+      <div class="card-num">06 / 06</div>
+      <div class="card-title">Donor Readiness Report</div>
+      <div class="card-desc">Pre-mission governance readiness for ADB, World Bank, and UN supervision missions. Identifies gaps before the donor does.</div>
+      <div class="card-price">$1,500 – $2,500</div>
     </div>
   </div>
+</section>
 
-  <!-- PANEL 2: NCR -->
-  <div class="form-panel" id="panel-2">
-    <div class="fieldset">
-      <div class="fieldset-legend">Project Information</div>
-      <div class="form-grid">
-        <div class="field"><label>Project Name</label><input type="text" value="Hetauda–Narayanghat Road Upgrading Project"></div>
-        <div class="field"><label>Client / Funder</label><input type="text" value="Department of Roads / ADB Loan 4412-NEP"></div>
-        <div class="field"><label>Contractor</label><input type="text" value="Everest Road Builders Consortium"></div>
-        <div class="field"><label>Reporting Period</label><input type="text" value="01 January 2026 — 09 March 2026"></div>
-        <div class="field"><label>Total NCRs Raised</label><input type="number" value="12" min="0"></div>
-        <div class="field"><label>Report Reference</label><input type="text" value="COS-NCR-2026-REG-001"></div>
+<!-- ── HOW IT WORKS ────────────────────────────────────────────────── -->
+<section id="how" style="background:rgba(31,56,100,0.06);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-eyebrow">How It Works</div>
+  <h2>From your data to a<br>delivered report in 24 hours.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Select your report type and fill the data form</div>
+        <div class="step-desc">Choose from 6 report types. Fill a plain-language form — no technical jargon, no special knowledge required. Takes 20–30 minutes on site or at your desk.</div>
+        <div class="step-time">20–30 minutes</div>
       </div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">NCR Status Summary</div>
-      <div class="form-grid cols-3">
-        <div class="field"><label>Closed NCRs</label><input type="number" value="7" min="0"></div>
-        <div class="field"><label>Open NCRs</label><input type="number" value="3" min="0"></div>
-        <div class="field"><label>Overdue NCRs</label><input type="number" value="2" min="0"></div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Email the completed form to CM Academy</div>
+        <div class="step-desc">Send to cm.academy.consulting@gmail.com with any supporting documents. We confirm receipt within 2 hours.</div>
+        <div class="step-time">2 minutes</div>
       </div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c2">74%</span></div>
-          <input type="range" min="0" max="100" value="74" oninput="updateScore('c2',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o2">69%</span></div>
-          <input type="range" min="0" max="100" value="69" oninput="updateScore('o2',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s2">72%</span></div>
-          <input type="range" min="0" max="100" value="72" oninput="updateScore('s2',this.value)">
-        </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">We generate your branded COS™ report</div>
+        <div class="step-desc">Your data is entered into the COS™ Report Generator. A fully branded, professionally structured report is produced — DOCX and PDF — with your project details, compliance scores, and CCM sign-off.</div>
+        <div class="step-time">5 seconds generation · our review included</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Receive your report. Submit. Get approved.</div>
+        <div class="step-desc">We email your branded report within 24 hours. You submit to your donor, authority, or client. Move forward.</div>
+        <div class="step-time">Within 24 hours of receiving your data</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- PANEL 3: Governance -->
-  <div class="form-panel" id="panel-3">
-    <div class="fieldset">
-      <div class="fieldset-legend">Project Information</div>
-      <div class="form-grid">
-        <div class="field"><label>Project Name</label><input type="text" value="Melamchi Water Supply Distribution Network Expansion"></div>
-        <div class="field"><label>Client</label><input type="text" value="Melamchi Water Supply Development Board (MWSDB)"></div>
-        <div class="field"><label>Funder</label><input type="text" value="Asian Development Bank (ADB Loan 2776-NEP)"></div>
-        <div class="field"><label>Contract Value</label><input type="text" value="NPR 3.84 Billion (USD ~28.9 Million)"></div>
-        <div class="field"><label>Project Phase</label><input type="text" value="Construction Phase — 34% Complete"></div>
-        <div class="field"><label>Assessment Date</label><input type="text" value="09 March 2026"></div>
+
+<!-- ── TRANSPARENCY SECTION ───────────────────────────────────────── -->
+<section style="background:rgba(7,16,13,0.7);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 5rem;">
+  <div style="max-width:860px;">
+    <div class="section-eyebrow">Our Process — Fully Transparent</div>
+    <h2>AI-assisted automation.<br>CCM human review. Always.</h2>
+    <p class="section-sub" style="max-width:680px;">
+      We believe you deserve to know exactly how your compliance report is produced.
+      This transparency is part of the COS™ methodology — and it is what makes our service trustworthy.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;">
+
+      <div style="border:1px solid var(--border);padding:2rem;background:rgba(31,56,100,0.15);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">What the automation does</div>
+        <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
+          The COS™ Report Generator is a structured AI-assisted system built on published international frameworks —
+          ADB Safeguard Policy Statement, IFC Performance Standards, ISO 45001, GRI Standards, and CMAA Body of Knowledge.
+          When you submit your project data, the system structures it into a professionally formatted compliance report
+          in minutes — consistent, reproducible, and framework-aligned every time.
+        </p>
       </div>
+
+      <div style="border:1px solid var(--border);padding:2rem;background:rgba(31,56,100,0.15);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">What the CCM review does</div>
+        <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
+          Every report is personally reviewed by Susil Bhandari, CCM (CMAA-USA) — 22 years of field experience
+          across Nepal, Qatar, and Bahrain — before it reaches you. The review checks that findings are accurate,
+          scores are justified, and the report reflects what is actually happening on site.
+          The CCM review is what makes the report trustworthy — and certifiable.
+        </p>
+      </div>
+
+      <div style="border:1px solid var(--border);padding:2rem;background:rgba(30,107,60,0.1);border-color:rgba(30,107,60,0.3);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:#6FCF97;text-transform:uppercase;margin-bottom:0.8rem;">Why this benefits you</div>
+        <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
+          A traditional compliance consultant charges $5,000–$15,000 and takes 3 weeks.
+          They also use templates and standard frameworks — just without telling you.
+          Our approach is identical in quality, transparent in process, and delivered in 24 hours
+          at a sustainable fee that makes mandatory reporting accessible to every project — not just large ones.
+        </p>
+      </div>
+
+      <div style="border:1px solid var(--border);padding:2rem;background:rgba(201,168,76,0.06);border-color:rgba(201,168,76,0.25);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">Our ethical commitment</div>
+        <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
+          The COS™ Methodology is open-access and published on Zenodo (DOI: 10.5281/zenodo.18802971).
+          Every score in every report is derived from data you provide — not from what any authority wants to see.
+          A report that returns 44% on Oversight is delivered as 44%. We do not adjust scores for approval.
+          That is the difference between compliance reporting and compliance theatre.
+        </p>
+      </div>
+
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c3">76%</span></div>
-          <input type="range" min="0" max="100" value="76" oninput="updateScore('c3',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o3">70%</span></div>
-          <input type="range" min="0" max="100" value="70" oninput="updateScore('o3',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s3">61%</span></div>
-          <input type="range" min="0" max="100" value="61" oninput="updateScore('s3',this.value)">
-        </div>
-      </div>
-    </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">Executive Summary</div>
-      <div class="form-grid full">
-        <div class="field"><label>Assessment Summary</label><textarea>This COS™ Project Governance Assessment evaluates governance maturity at 34% construction completion. Overall governance health: 69% — PARTIAL. Immediate attention required: VO backlog (14 unprocessed), risk register not updated in 47 days, and sustainability governance gaps.</textarea></div>
-      </div>
+    <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:3px solid var(--gold);background:rgba(201,168,76,0.05);">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--white);line-height:1.6;">
+        "AI handles the structure. Experience handles the judgement. Transparency handles the trust."
+      </p>
+      <p style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold);margin-top:0.5rem;letter-spacing:0.08em;">
+        — Susil Bhandari, CCM · CM Academy · COS™ Methodology
+      </p>
     </div>
   </div>
+</section>
 
-  <!-- PANEL 4: ESG -->
-  <div class="form-panel" id="panel-4">
-    <div class="fieldset">
-      <div class="fieldset-legend">Organization & Project</div>
-      <div class="form-grid">
-        <div class="field"><label>Project / Organization</label><input type="text" value="Upper Trishuli 1 Hydropower Project"></div>
-        <div class="field"><label>Project Type</label><input type="text" value="216 MW Run-of-River Hydropower"></div>
-        <div class="field"><label>Funder / Lender</label><input type="text" value="IFC · ADB · AIIB · OECD-backed Lenders"></div>
-        <div class="field"><label>Reporting Period</label><input type="text" value="Q4 2025 (October – December 2025)"></div>
-        <div class="field"><label>Total Workforce</label><input type="text" value="2,847"></div>
-        <div class="field"><label>Local Workforce %</label><input type="text" value="68%"></div>
-      </div>
+<!-- ── MARKETS ─────────────────────────────────────────────────────── -->
+<section id="markets">
+  <div class="section-eyebrow">Who We Serve</div>
+  <h2>Every market where compliance<br>reports are mandatory.</h2>
+  <div class="markets-grid">
+    <div class="market-card">
+      <div class="market-flag">🌏</div>
+      <div class="market-title">MDB Projects — ADB, World Bank, UN</div>
+      <div class="market-desc">Semi-annual Environmental & Social Monitoring Reports, Quarterly Progress Reports, Donor Readiness Assessments. Required as a condition of loan disbursement on every financed project globally.</div>
+      <div class="market-tag">2,000+ active projects worldwide</div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">GHG & Environmental Data</div>
-      <div class="form-grid">
-        <div class="field"><label>GHG Scope 1 (tCO₂e)</label><input type="text" value="3,847"></div>
-        <div class="field"><label>GHG Scope 2 (tCO₂e)</label><input type="text" value="124"></div>
-        <div class="field"><label>Water Withdrawal (m³)</label><input type="text" value="187,400"></div>
-        <div class="field"><label>Waste Recycled %</label><input type="text" value="62%"></div>
-        <div class="field"><label>LTI Rate</label><input type="text" value="0.42"></div>
-        <div class="field"><label>Fatalities</label><input type="number" value="0" min="0"></div>
-      </div>
+    <div class="market-card">
+      <div class="market-flag">🏗️</div>
+      <div class="market-title">GCC Construction — Qatar, UAE, Saudi, Bahrain</div>
+      <div class="market-desc">Monthly OSH Performance Reports required under Qatar Labour Law and UAE Federal Labour Law. Workers Welfare Standards compliance. ESG disclosure for listed contractors.</div>
+      <div class="market-tag">500,000+ construction workers · GCC Labour Law</div>
     </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c4">77%</span></div>
-          <input type="range" min="0" max="100" value="77" oninput="updateScore('c4',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o4">72%</span></div>
-          <input type="range" min="0" max="100" value="72" oninput="updateScore('o4',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s4">80%</span></div>
-          <input type="range" min="0" max="100" value="80" oninput="updateScore('s4',this.value)">
-        </div>
-      </div>
+    <div class="market-card">
+      <div class="market-flag">🌿</div>
+      <div class="market-title">Asia-Pacific ESG Disclosure</div>
+      <div class="market-desc">ISSB IFRS S2 mandatory for Singapore listed companies from 2025. GRI and TCFD reporting spreading across Malaysia, Hong Kong, Philippines. Construction firms now in scope.</div>
+      <div class="market-tag">ISSB IFRS S2 · GRI · TCFD · Singapore MAS</div>
+    </div>
+    <div class="market-card">
+      <div class="market-flag">🇪🇺</div>
+      <div class="market-title">EU CSRD Sustainability Reports</div>
+      <div class="market-desc">50,000 companies required to file ESRS-aligned sustainability reports from 2025. Construction and infrastructure firms now mandatory. Double materiality assessment required.</div>
+      <div class="market-tag">CSRD · ESRS · 50,000 companies in scope</div>
     </div>
   </div>
+</section>
 
-  <!-- PANEL 5: Donor -->
-  <div class="form-panel" id="panel-5">
-    <div class="fieldset">
-      <div class="fieldset-legend">Project & Mission Details</div>
-      <div class="form-grid">
-        <div class="field"><label>Project Name</label><input type="text" value="Integrated Urban Development Project — Pokhara Sub-Project"></div>
-        <div class="field"><label>Executing Agency</label><input type="text" value="Pokhara Metropolitan City"></div>
-        <div class="field"><label>Donor</label><input type="text" value="Asian Development Bank (ADB)"></div>
-        <div class="field"><label>Loan / Grant Reference</label><input type="text" value="ADB Loan 3580-NEP | Grant 0563-NEP"></div>
-        <div class="field"><label>Mission Type</label><input type="text" value="ADB Mid-Term Review Mission"></div>
-        <div class="field"><label>Mission Dates</label><input type="text" value="16–20 March 2026"></div>
-      </div>
-    </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">Readiness Rating</div>
-      <div class="form-grid cols-3" style="margin-bottom:1rem">
+<!-- ── LEAD CAPTURE ────────────────────────────────────────────────── -->
+<section id="contact" class="lead-section">
+  <div class="lead-inner">
+    <div class="section-eyebrow">Request a Report</div>
+    <h2>Tell us about your project.<br>We will respond within 2 hours.</h2>
+    <p class="section-sub">Fill the form below. We will contact you to confirm requirements and send your data collection form. No obligation — first conversation is free.</p>
+
+    <form class="lead-form" id="lead-form">
+      <div class="form-row">
         <div class="field">
-          <label>Overall Readiness</label>
-          <select id="p5-readiness">
-            <option value="READY">READY</option>
-            <option value="SUBSTANTIALLY READY" selected>SUBSTANTIALLY READY</option>
-            <option value="PARTIALLY READY">PARTIALLY READY</option>
-            <option value="NOT READY">NOT READY</option>
-          </select>
+          <label>Your Name *</label>
+          <input type="text" id="f-name" placeholder="Full name" required>
+        </div>
+        <div class="field">
+          <label>Organisation *</label>
+          <input type="text" id="f-org" placeholder="Company or agency name" required>
         </div>
       </div>
-    </div>
-    <div class="fieldset">
-      <div class="fieldset-legend">COS™ Pillar Scores</div>
-      <div class="score-group">
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-c">C — Compliance</span><span class="score-val pillar-c" id="sv-c5">81%</span></div>
-          <input type="range" min="0" max="100" value="81" oninput="updateScore('c5',this.value)">
+      <div class="form-row">
+        <div class="field">
+          <label>Email Address *</label>
+          <input type="email" id="f-email" placeholder="your@email.com" required>
         </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-o">O — Oversight</span><span class="score-val pillar-o" id="sv-o5">76%</span></div>
-          <input type="range" min="0" max="100" value="76" oninput="updateScore('o5',this.value)">
-        </div>
-        <div class="score-item">
-          <div class="score-label"><span class="pillar-s">S — Sustainability</span><span class="score-val pillar-s" id="sv-s5">73%</span></div>
-          <input type="range" min="0" max="100" value="73" oninput="updateScore('s5',this.value)">
+        <div class="field">
+          <label>Country / Region</label>
+          <input type="text" id="f-country" placeholder="e.g. Nepal, Qatar, Singapore">
         </div>
       </div>
+      <div class="field">
+        <label>Report Type Needed *</label>
+        <select id="f-report" required>
+          <option value="">Select report type...</option>
+          <option>QA/QC Site Audit Report — $500–$1,500</option>
+          <option>OSH Field Audit Report — $500–$1,500</option>
+          <option>NCR Register & CAPA — $500–$1,000</option>
+          <option>Project Governance Assessment — $1,500–$3,000</option>
+          <option>ESG Alignment Report — $1,000–$2,500</option>
+          <option>Donor Readiness Report — $1,500–$2,500</option>
+          <option>Multiple reports — Full Suite</option>
+          <option>Not sure — please advise</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Brief project description</label>
+        <textarea id="f-desc" placeholder="Project name, funder, location, upcoming deadline or submission date..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:fit-content">▶ Send Enquiry</button>
+      <p class="form-note">Your information is used only to respond to your enquiry. We do not share or sell contact data.</p>
+    </form>
+
+    <div id="form-success">
+      <p>✓ Thank you. We will respond within 2 hours at cm.academy.consulting@gmail.com</p>
+      <p style="margin-top:0.5rem;color:rgba(255,255,255,0.5)">While you wait — download the free COS™ Data Collection Kit to start preparing your project information.</p>
     </div>
   </div>
-
-  <!-- GENERATE BUTTON ROW -->
-  <div class="btn-row">
-    <button class="btn btn-generate" onclick="generateReport()">
-      <span>▶</span> Generate COS™ Report
-    </button>
-    <button class="btn btn-secondary" onclick="resetForm()">Reset</button>
-    <span class="text-grey" style="margin-left:auto">Report will be generated as .docx + .pdf</span>
-  </div>
-
-  <!-- PROGRESS -->
-  <div class="gen-progress" id="gen-progress">
-    <div class="progress-label" id="progress-label">GENERATING REPORT...</div>
-    <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill"></div></div>
-    <div class="progress-steps" id="progress-steps"></div>
-  </div>
-
 </section>
 
-<!-- ── OUTPUT PREVIEW ── -->
-<div class="output-panel" id="output-panel">
-  <div class="output-card">
-    <div class="output-title" id="out-title">—</div>
-    <div class="output-ref" id="out-ref">—</div>
-
-    <div class="output-scores">
-      <div class="score-cell" style="background:rgba(30,107,60,0.15)">
-        <div class="score-big pillar-c" id="out-c">—</div>
-        <div class="score-lbl pillar-c">Compliance</div>
-      </div>
-      <div class="score-cell" style="background:rgba(74,158,204,0.1)">
-        <div class="score-big pillar-o" id="out-o">—</div>
-        <div class="score-lbl pillar-o">Oversight</div>
-      </div>
-      <div class="score-cell" style="background:rgba(201,168,76,0.1)">
-        <div class="score-big pillar-s" id="out-s">—</div>
-        <div class="score-lbl pillar-s">Sustainability</div>
-      </div>
-      <div class="score-cell">
-        <div class="score-big" id="out-overall" style="color:var(--white)">—</div>
-        <div class="score-lbl" style="color:var(--grey)">Overall COS™</div>
+<!-- ── ABOUT ───────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-eyebrow">About</div>
+      <h2>22 years on the sites<br>where compliance fails.</h2>
+      <p class="section-sub">COS™ was not built in a consulting office. It was built from two decades of watching compliance reports filed on projects where workers were getting hurt — because the reports reflected what the authority wanted to see, not what was actually happening on the ground.</p>
+      <div class="quote-block">
+        <div class="quote-text">"The purpose of a compliance report is not to satisfy an authority. It is to protect a worker."</div>
+        <div class="quote-attr">— Susil Bhandari, CCM · COS™ White Paper · DOI: 10.5281/zenodo.18802971</div>
       </div>
     </div>
+    <div>
+      <div class="cred-list">
+        <div class="cred">
+          <div class="cred-badge">CCM</div>
+          <div class="cred-text">Certified Construction Manager, CMAA-USA. Passed with distinction. One of very few CCM holders based in South Asia.</div>
+        </div>
+        <div class="cred">
+          <div class="cred-badge">COS™</div>
+          <div class="cred-text">Founder and sole author of the COS™ Methodology. Published open-access on Zenodo. DOI: 10.5281/zenodo.18802971. Aligned with ADB, World Bank, and IFC standards.</div>
+        </div>
 
-    <div class="output-meta" id="out-meta"></div>
-
-    <div class="download-btns">
-      <button class="btn btn-primary">⬇ Download .docx</button>
-      <button class="btn btn-secondary">⬇ Download .pdf</button>
-      <button class="btn btn-secondary" onclick="document.getElementById('output-panel').classList.remove('visible'); window.scrollTo({top:0,behavior:'smooth'})">← New Report</button>
+        <div class="cred">
+          <div class="cred-badge">22 YRS</div>
+          <div class="cred-text">Nepal, Qatar (2007–2012), Bahrain (2012–2021). KAHRAMAA, EWA, Parsons, Nass Corporation. High-voltage transmission, utilities, donor-funded public works.</div>
+        </div>
+        <div class="cred">
+          <div class="cred-badge">FOUNDER</div>
+          <div class="cred-text">CM Academy & NeoPlan Consult Pvt. Ltd. — Kathmandu, Nepal. Nepal Reg. No. 275143/078/079. Developed in Nepal. Leading the World.™</div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ── FOOTER ── -->
+<!-- ── FOOTER ──────────────────────────────────────────────────────── -->
 <footer>
   <div class="footer-left">
     <div class="footer-name">Susil Bhandari, CCM</div>
-    <div class="footer-creds">
-      Certified Construction Manager (CMAA) · Founder, CM Academy · Director, NeoPlan Consult Pvt. Ltd.<br>
-      22 years · Nepal · Bahrain · Qatar · linkedin.com/in/ccm-susil-bhandari<br>
-      cm.academy.consulting@gmail.com
+    <div class="footer-cred">
+      Founder, CM Academy & NeoPlan Consult Pvt. Ltd. · Kathmandu, Nepal<br>
+      cm.academy.consulting@gmail.com · linkedin.com/in/ccm-susil-bhandari<br>
+      © 2026 Complete Construction Management Developers Pvt. Ltd. (Reg. 275143/078/079)
     </div>
   </div>
   <div class="footer-right">
-    <div class="footer-copy">COS™ Methodology — DOI: 10.5281/zenodo.18802971</div>
-    <div class="footer-copy">© 2026 CM Academy — Complete Construction Management Developers Pvt. Ltd.</div>
-    <div class="footer-copy">Nepal, Reg. No. 275143/078/079 · CC BY 4.0</div>
+    <div class="footer-doi">DOI: 10.5281/zenodo.18802971</div>
+    <div>COS™ Methodology — CC BY 4.0</div>
+    <div>Compliance · Oversight · Sustainability</div>
   </div>
 </footer>
 
+<!-- ── CHAT WIDGET ─────────────────────────────────────────────────── -->
+<button id="chat-toggle" title="Chat with CM Academy" onclick="toggleChat()">💬</button>
+
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">SB</div>
+    <div class="chat-info">
+      <div class="chat-name">CM ACADEMY · COS™</div>
+      <div class="chat-status">● Typically replies within 2 hours</div>
+    </div>
+    <button id="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg msg-bot">
+      Hello! I'm the CM Academy assistant.<br><br>
+      I can help you understand which COS™ report your project needs, how the process works, and what information to prepare.<br><br>
+      What brings you here today?
+      <div class="msg-time">CM Academy</div>
+    </div>
+  </div>
+  <div class="chat-typing" id="typing-indicator">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="quick-replies" id="quick-replies">
+    <button class="qr" onclick="sendQuick('Which report do I need?')">Which report do I need?</button>
+    <button class="qr" onclick="sendQuick('ADB / World Bank project')">ADB / World Bank project</button>
+    <button class="qr" onclick="sendQuick('GCC OSH requirement')">GCC OSH requirement</button>
+    <button class="qr" onclick="sendQuick('How much does it cost?')">Pricing?</button>
+    <button class="qr" onclick="sendQuick('How fast can I get the report?')">Turnaround time?</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button id="chat-send" onclick="sendMessage()">→</button>
+  </div>
+</div>
+
 <script>
-// ── STATE ──
-const REPORT_TYPES = [
-  "QA/QC Site Audit Report",
-  "OSH Field Audit Report",
-  "NCR Register & Closure Report",
-  "Project Governance Assessment",
-  "ESG Alignment Report",
-  "Donor Readiness Report"
-];
+// ── CHAT LOGIC ────────────────────────────────────────────────────
+const RESPONSES = {
+  'which report': `Great question. Here's a quick guide:\n\n• QA/QC audit → for payment certificates and inspection records\n• OSH report → monthly safety compliance (GCC, South Asia)\n• NCR Register → after a non-conformance, before work restarts\n• Governance Assessment → ADB/World Bank governance review\n• ESG Report → for lenders, donors, Singapore/EU disclosure\n• Donor Readiness → before ADB/WB supervision mission\n\nTell me about your project and I'll advise the right type.`,
+  'adb': `For ADB and World Bank projects, the most commonly required reports are:\n\n• Environmental & Social Monitoring Report (semi-annual)\n• Donor Readiness Report (before each mission)\n• Project Governance Assessment (mid-term review)\n• ESG Alignment Report (annual disbursement condition)\n\nAll are generated from a 20-minute data form. Delivered in 24 hours. Price: $800–$2,500 per report.\n\nWould you like to enquire? Fill the form on this page or email cm.academy.consulting@gmail.com`,
+  'world bank': `For ADB and World Bank projects, the most commonly required reports are:\n\n• Environmental & Social Monitoring Report (semi-annual)\n• Donor Readiness Report (before each mission)\n• Project Governance Assessment\n• ESG Alignment Report\n\nAll generated in 24 hours from your data. Price: $800–$2,500.\n\nEmail cm.academy.consulting@gmail.com to start.`,
+  'gcc': `For GCC projects (Qatar, UAE, Saudi, Bahrain), the mandatory reports are:\n\n• Monthly OSH Performance Report — required under Qatar Labour Law No. 14 and UAE Federal Labour Law\n• Annual OSH Performance Report\n• Workers Welfare Standards Compliance Report\n• ESG Report (for listed contractors)\n\nMonthly OSH retainer available from $200–$400/month.\n\nEmail cm.academy.consulting@gmail.com or fill the form above.`,
+  'osh': `OSH (Occupational Safety & Health) reports are mandatory in most construction jurisdictions:\n\n• GCC: Monthly under Qatar Labour Law, UAE Federal Law\n• South Asia: Monthly under Nepal Labour Act\n• International projects: Required by ILO conventions\n\nPrice: $500–$1,500 per report. Monthly retainer: $200–$400/month.\n\nFill the form above or email cm.academy.consulting@gmail.com`,
+  'cost': `COS™ Report pricing:\n\n• QA/QC Site Audit — $500–$1,500\n• OSH Field Audit — $500–$1,500\n• NCR Register & CAPA — $500–$1,000\n• Governance Assessment — $1,500–$3,000\n• ESG Alignment Report — $1,000–$2,500\n• Donor Readiness Report — $1,500–$2,500\n• Full Suite (all 6) — $4,000\n\nNPR rates available for Nepal clients. Monthly OSH retainer from $200/month.\n\nContact cm.academy.consulting@gmail.com for a quote.`,
+  'pric': `COS™ Report pricing:\n\n• QA/QC Site Audit — $500–$1,500\n• OSH Field Audit — $500–$1,500\n• NCR Register & CAPA — $500–$1,000\n• Governance Assessment — $1,500–$3,000\n• ESG Alignment Report — $1,000–$2,500\n• Donor Readiness Report — $1,500–$2,500\n• Full Suite (all 6) — $4,000\n\nContact cm.academy.consulting@gmail.com for a custom quote.`,
+  'turnaround': `Standard turnaround is 24 hours from receiving your completed data form.\n\nFor complex reports (Governance Assessment, ESG, Donor Readiness) — 48 hours.\n\nFull Suite (all 6 reports) — 72 hours.\n\nWe confirm receipt within 2 hours of your email. You will know exactly when to expect your report.`,
+  'fast': `Standard turnaround is 24 hours from receiving your completed data form.\n\nFor urgent submissions (donor mission tomorrow, payment certificate due) — contact us directly and we will prioritise.\n\nEmail: cm.academy.consulting@gmail.com`,
+  'esg': `ESG reports are now mandatory for:\n\n• Singapore listed companies — ISSB IFRS S2 from 2025\n• EU companies — CSRD/ESRS from 2025 (50,000 firms)\n• ADB/World Bank projects — semi-annual condition\n• GCC listed contractors — ADX, DFM, Tadawul requirements\n\nOur ESG Alignment Report covers GRI, TCFD, IFC PS, UN SDGs, and ISSB IFRS S2.\n\nPrice: $1,000–$2,500. Email cm.academy.consulting@gmail.com`,
+  'nepal': `For Nepal-based projects:\n\n• Government PIU projects (ADB, World Bank, bilateral donors) — all 6 report types applicable\n• Nepal Labour Act compliance — monthly OSH reporting\n• PPMO procurement compliance reports\n• Municipal infrastructure governance assessments\n\nNPR pricing available. Contact cm.academy.consulting@gmail.com or call/WhatsApp: [your number].`,
+};
 
-const REPORT_SCRIPTS = [
-  "generate_report.js",
-  "generate_osh_report.js",
-  "generate_ncr_register.js",
-  "generate_governance_report.js",
-  "generate_esg_report.js",
-  "generate_donor_report.js"
-];
-
-let currentReport = 0;
-
-// ── CHECKLIST DATA ──
-const QA_CHECKLIST = [
-  { text: "Material certificates of compliance (ISO/ASTM) checked and filed", ref: "ISO 9001" },
-  { text: "Approved shop drawings available at site and current revision confirmed", ref: "FIDIC" },
-  { text: "Method statements approved for active work packages", ref: "CMAA" },
-  { text: "NCR register maintained — all NCRs logged with date, description, status", ref: "ISO 9001" },
-  { text: "NCR closure within 14-day contractual deadline", ref: "FIDIC" },
-  { text: "Daily QA/QC inspection record updated — no gaps in last 30 days", ref: "ISO 9001" },
-  { text: "Workmanship inspections against approved method statements", ref: "CMAA" },
-  { text: "Test results (compaction, concrete, asphalt) within specification", ref: "ASTM" },
-  { text: "ITP followed for current construction phase", ref: "ISO 9001" },
-  { text: "As-built records updated and traceable to approved drawings", ref: "FIDIC" },
-];
-
-const DEFAULT_STATUSES = ["PASS","PASS","PASS","FAIL","FAIL","PASS","PASS","PASS","PASS","OBS"];
-
-// ── INIT ──
-function initChecklists() {
-  const grid = document.getElementById('checklist-0');
-  if (!grid) return;
-  grid.innerHTML = '';
-  QA_CHECKLIST.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'check-item';
-    const status = DEFAULT_STATUSES[i];
-    div.innerHTML = `
-      <div>
-        <div class="check-text">${item.text}</div>
-        <div class="check-ref">${item.ref}</div>
-      </div>
-      <select class="status-select ${status.toLowerCase()}" onchange="updateCheckStatus(this,'${status}')">
-        <option value="PASS" ${status==='PASS'?'selected':''}>PASS</option>
-        <option value="FAIL" ${status==='FAIL'?'selected':''}>FAIL</option>
-        <option value="OBS"  ${status==='OBS'?'selected':''}>OBS</option>
-        <option value="N/A"  ${status==='N/A'?'selected':''}>N/A</option>
-      </select>`;
-    grid.appendChild(div);
-  });
-}
-
-function updateCheckStatus(sel) {
-  sel.className = 'status-select ' + sel.value.toLowerCase().replace('/','');
-}
-
-// ── NAVIGATION ──
-function selectReport(idx) {
-  // Update card active state
-  document.querySelectorAll('.report-card').forEach((c,i) => {
-    c.classList.toggle('active', i === idx);
-  });
-  // Update panels
-  document.querySelectorAll('.form-panel').forEach((p,i) => {
-    p.classList.toggle('active', i === idx);
-  });
-  // Update header
-  document.getElementById('form-title').textContent = REPORT_TYPES[idx];
-  currentReport = idx;
-
-  // Scroll to form
-  document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ── SCORE SLIDERS ──
-function updateScore(id, val) {
-  const el = document.getElementById('sv-' + id);
-  if (el) el.textContent = val + '%';
-}
-
-// ── GENERATE ──
-async function generateReport() {
-  const progress = document.getElementById('gen-progress');
-  const fill = document.getElementById('progress-fill');
-  const label = document.getElementById('progress-label');
-  const steps = document.getElementById('progress-steps');
-
-  progress.classList.add('visible');
-
-  const genSteps = [
-    "Reading project data...",
-    "Applying COS™ Methodology framework...",
-    "Building Compliance (C) pillar section...",
-    "Building Oversight (O) pillar section...",
-    "Building Sustainability (S) pillar section...",
-    "Generating compliance score tables...",
-    "Applying CM Academy branding...",
-    "Inserting DOI citation (10.5281/zenodo.18802971)...",
-    "Assembling sign-off block...",
-    "Exporting .docx format...",
-    "Converting to PDF...",
-    "Report ready.",
-  ];
-
-  steps.innerHTML = '';
-  genSteps.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'progress-step';
-    div.textContent = s;
-    steps.appendChild(div);
-  });
-
-  const stepEls = steps.querySelectorAll('.progress-step');
-
-  for (let i = 0; i < genSteps.length; i++) {
-    await delay(180 + Math.random() * 220);
-    fill.style.width = ((i + 1) / genSteps.length * 100) + '%';
-    label.textContent = genSteps[i].toUpperCase();
-    if (stepEls[i]) stepEls[i].classList.add('done');
+function findResponse(text) {
+  const t = text.toLowerCase();
+  for (const [key, response] of Object.entries(RESPONSES)) {
+    if (t.includes(key)) return response;
   }
-
-  await delay(400);
-  showOutput();
+  return `Thank you for your message. For the most accurate answer, please email cm.academy.consulting@gmail.com directly — Susil Bhandari, CCM will respond within 2 hours.\n\nOr fill the enquiry form on this page and we will contact you.`;
 }
 
-function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-function showOutput() {
-  // Gather scores
-  const c = parseInt(document.getElementById('sv-c'+currentReport)?.textContent) || 0;
-  const o = parseInt(document.getElementById('sv-o'+currentReport)?.textContent) || 0;
-  const s = parseInt(document.getElementById('sv-s'+currentReport)?.textContent) || 0;
-  const overall = Math.round((c+o+s)/3);
-
-  const getColor = v => v >= 80 ? 'var(--green)' : v >= 65 ? 'var(--amber)' : 'var(--red)';
-
-  document.getElementById('out-title').textContent = REPORT_TYPES[currentReport];
-
-  // Get ref from form
-  const refInput = document.querySelector('#panel-'+currentReport+' input[id*="ref"]') ||
-    document.querySelector('#panel-'+currentReport+' input:nth-child(6)');
-  document.getElementById('out-ref').textContent =
-    (refInput ? refInput.value : 'COS-REPORT-2026-001') + '  ·  ' + new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
-
-  document.getElementById('out-c').textContent = c + '%';
-  document.getElementById('out-o').textContent = o + '%';
-  document.getElementById('out-s').textContent = s + '%';
-  document.getElementById('out-overall').textContent = overall + '%';
-  document.getElementById('out-overall').style.color = getColor(overall);
-
-  // Meta
-  const meta = document.getElementById('out-meta');
-  meta.innerHTML = `
-    <div class="meta-row"><strong>Report Type</strong>${REPORT_TYPES[currentReport]}</div>
-    <div class="meta-row"><strong>Framework</strong>COS™ Methodology v1.0</div>
-    <div class="meta-row"><strong>Standards</strong>CMAA · FIDIC · ISO · IFC · GCF · SDGs · GRI · TCFD</div>
-    <div class="meta-row"><strong>DOI</strong>10.5281/zenodo.18802971</div>
-    <div class="meta-row"><strong>Prepared by</strong>Susil Bhandari, CCM — CM Academy</div>
-    <div class="meta-row"><strong>Format</strong>.docx + .pdf with CM Academy letterhead</div>
-  `;
-
-  document.getElementById('gen-progress').classList.remove('visible');
-  const panel = document.getElementById('output-panel');
-  panel.classList.add('visible');
-  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function toggleChat() {
+  document.getElementById('chat-window').classList.toggle('open');
 }
 
-function resetForm() {
-  document.getElementById('gen-progress').classList.remove('visible');
-  document.getElementById('output-panel').classList.remove('visible');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function addMsg(text, type) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `msg msg-${type}`;
+  div.innerHTML = text.replace(/\n/g, '<br>') + (type === 'bot' ? `<div class="msg-time">CM Academy</div>` : '');
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
-// ── BOOT ──
-document.addEventListener('DOMContentLoaded', () => {
-  initChecklists();
+function showTyping() {
+  const t = document.getElementById('typing-indicator');
+  t.classList.add('visible');
+  document.getElementById('chat-messages').scrollTop = 9999;
+}
+
+function hideTyping() {
+  document.getElementById('typing-indicator').classList.remove('visible');
+}
+
+function sendQuick(text) {
+  document.getElementById('quick-replies').style.display = 'none';
+  addMsg(text, 'user');
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addMsg(findResponse(text), 'bot');
+  }, 900 + Math.random() * 600);
+}
+
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addMsg(text, 'user');
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addMsg(findResponse(text), 'bot');
+  }, 900 + Math.random() * 700);
+}
+
+// ── LEAD FORM ─────────────────────────────────────────────────────
+document.getElementById('lead-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name    = document.getElementById('f-name').value;
+  const org     = document.getElementById('f-org').value;
+  const email   = document.getElementById('f-email').value;
+  const country = document.getElementById('f-country').value;
+  const report  = document.getElementById('f-report').value;
+  const desc    = document.getElementById('f-desc').value;
+
+  // Build mailto link as fallback (works without backend)
+  const subject = encodeURIComponent(`COS™ Report Enquiry — ${report} — ${org}`);
+  const body = encodeURIComponent(
+    `New enquiry from CM Academy website\n\n` +
+    `Name: ${name}\nOrganisation: ${org}\nEmail: ${email}\nCountry: ${country}\n` +
+    `Report Needed: ${report}\n\nProject Description:\n${desc}\n\n` +
+    `---\nSent from cmacademyconsulting.github.io`
+  );
+  window.open(`mailto:cm.academy.consulting@gmail.com?subject=${subject}&body=${body}`);
+
+  // Show success
+  document.getElementById('lead-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+
+  // Store lead locally for tracking
+  const leads = JSON.parse(localStorage.getItem('cos_leads') || '[]');
+  leads.push({ name, org, email, country, report, desc, date: new Date().toISOString() });
+  localStorage.setItem('cos_leads', JSON.stringify(leads));
+});
+
+// ── SMOOTH SCROLL ─────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 </script>
 </body>
