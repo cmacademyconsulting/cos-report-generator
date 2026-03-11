@@ -288,6 +288,210 @@ footer {
 .footer-right { text-align: right; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--grey); letter-spacing: 0.06em; line-height: 1.9; }
 .footer-doi { color: var(--gold); }
 
+
+/* ── ETHICS SECTION ─────────────────────────────────────────────── */
+.ethics-banner {
+  background: linear-gradient(135deg, rgba(14,27,46,0.98) 0%, rgba(31,56,100,0.15) 100%);
+  border-top: 2px solid var(--gold);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 10;
+  padding: 5rem 5rem;
+  overflow: hidden;
+}
+.ethics-banner::before {
+  content: 'ETHICS FIRST';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(6rem, 15vw, 14rem);
+  font-weight: 700; color: rgba(201,168,76,0.04);
+  white-space: nowrap; pointer-events: none; letter-spacing: 0.15em;
+  user-select: none;
+}
+.ethics-slogans {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px; background: var(--border);
+  border: 1px solid var(--border);
+  max-width: 1000px; margin-bottom: 4rem;
+}
+.slogan-card {
+  background: var(--dark); padding: 2.5rem 2rem;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.slogan-card:hover { background: rgba(31,56,100,0.35); }
+.slogan-num {
+  font-family: 'DM Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.3em; color: var(--gold); margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.slogan-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-style: italic;
+  color: var(--white); line-height: 1.45; margin-bottom: 0.8rem;
+}
+.slogan-para {
+  font-size: 0.78rem; color: var(--grey);
+  line-height: 1.7;
+}
+.ethics-declaration {
+  max-width: 820px; margin-bottom: 3rem;
+}
+.ethics-declaration h2 {
+  margin-bottom: 1.5rem;
+}
+.ethics-principles {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border); max-width: 820px;
+  margin-bottom: 3rem;
+}
+.principle {
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 1.5rem; padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.principle:last-child { border-bottom: none; }
+.principle:hover { background: rgba(201,168,76,0.04); }
+.principle-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700;
+  color: rgba(201,168,76,0.3); line-height: 1; padding-top: 0.2rem;
+}
+.principle-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.35rem;
+}
+.principle-body {
+  font-size: 0.82rem; color: var(--grey); line-height: 1.7;
+}
+.audit-log {
+  max-width: 820px; margin-bottom: 3rem;
+}
+.audit-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--border); font-size: 0.78rem;
+}
+.audit-table th {
+  font-family: 'DM Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); padding: 0.75rem 1rem;
+  background: rgba(31,56,100,0.3);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.audit-table td {
+  padding: 0.9rem 1rem; color: var(--grey);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  vertical-align: top; line-height: 1.5;
+}
+.audit-table tr:last-child td { border-bottom: none; }
+.audit-table tr:hover td { background: rgba(201,168,76,0.03); }
+.audit-fixed { color: #6FCF97; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; }
+.audit-was { color: #E07B00; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; }
+
+/* ── ACKNOWLEDGEMENT GATE ───────────────────────────────────────── */
+#ethics-gate {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(7,16,13,0.97);
+  backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  opacity: 1; transition: opacity 0.5s;
+}
+#ethics-gate.dismissed { opacity: 0; pointer-events: none; }
+.gate-box {
+  max-width: 680px; width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(14,27,46,0.95);
+  padding: 3.5rem;
+  position: relative;
+  max-height: 90vh; overflow-y: auto;
+}
+.gate-box::-webkit-scrollbar { width: 3px; }
+.gate-box::-webkit-scrollbar-thumb { background: var(--border); }
+.gate-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.3em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.gate-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--gold); }
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.1; margin-bottom: 1.5rem;
+}
+.gate-title em { color: var(--gold); font-style: italic; }
+.gate-body {
+  font-size: 0.88rem; color: var(--grey);
+  line-height: 1.75; margin-bottom: 2rem;
+}
+.gate-principles-mini {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem; background: rgba(201,168,76,0.04);
+  border-left: 3px solid var(--gold);
+}
+.gate-principle-mini {
+  font-size: 0.8rem; color: var(--grey); line-height: 1.5;
+}
+.gate-principle-mini strong {
+  color: var(--white); font-weight: 500;
+}
+.gate-link {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  color: var(--gold); letter-spacing: 0.08em;
+  text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding-bottom: 1px; transition: border-color 0.2s;
+  display: inline-block; margin-bottom: 2rem;
+}
+.gate-link:hover { border-color: var(--gold); }
+.gate-checkbox-row {
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin-bottom: 1.5rem; cursor: pointer;
+}
+.gate-checkbox {
+  width: 18px; height: 18px; flex-shrink: 0;
+  border: 1px solid var(--gold); background: transparent;
+  cursor: pointer; margin-top: 2px;
+  accent-color: var(--gold);
+}
+.gate-checkbox-label {
+  font-size: 0.82rem; color: var(--grey); line-height: 1.6;
+  cursor: pointer;
+}
+.gate-checkbox-label strong { color: var(--white); }
+#gate-proceed {
+  width: 100%;
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 1rem 2rem; background: rgba(201,168,76,0.2);
+  border: 1px solid rgba(201,168,76,0.3); color: rgba(201,168,76,0.4);
+  cursor: not-allowed; transition: all 0.3s;
+}
+#gate-proceed.ready {
+  background: var(--gold); border-color: var(--gold);
+  color: var(--dark); cursor: pointer; font-weight: 500;
+}
+#gate-proceed.ready:hover {
+  background: var(--gold-l); transform: translateY(-1px);
+}
+.gate-timestamp {
+  font-family: 'DM Mono', monospace; font-size: 0.58rem;
+  color: rgba(255,255,255,0.2); margin-top: 1rem;
+  letter-spacing: 0.06em; text-align: center;
+}
+
+@media (max-width: 900px) {
+  .ethics-slogans { grid-template-columns: 1fr; }
+  .ethics-banner { padding: 4rem 1.5rem; }
+  .gate-box { padding: 2rem; }
+  .audit-table { font-size: 0.72rem; }
+  .audit-table td, .audit-table th { padding: 0.6rem 0.7rem; }
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   header { padding: 1rem 1.5rem; }
@@ -311,6 +515,55 @@ footer {
 <body>
 
 <!-- ── HEADER ─────────────────────────────────────────────────────── -->
+
+<!-- ── ETHICS ACKNOWLEDGEMENT GATE ──────────────────────────────── -->
+<div id="ethics-gate">
+  <div class="gate-box">
+    <div class="gate-eyebrow">Before You Enter</div>
+    <div class="gate-title">
+      This site operates on an<br><em>ethics-first</em> foundation.
+    </div>
+    <p class="gate-body">
+      CM Academy and the COS™ Methodology exist to make construction projects safer for the workers 
+      who build them. Every service offered, every report produced, and every claim made on this site 
+      is governed by the COS™ Code of Ethics — seven principles of transparent, accountable, 
+      honest professional practice.
+      <br><br>
+      Before you proceed, please take a moment to read these principles. 
+      Whether you are a client, a fellow practitioner, an institution, or a student — 
+      understanding what this practice stands for is more important than any service it offers.
+    </p>
+    <div class="gate-principles-mini">
+      <div class="gate-principle-mini"><strong>1. Truth Before Approval</strong> — Scores reflect site reality. Always.</div>
+      <div class="gate-principle-mini"><strong>2. Credential Integrity</strong> — Only formally conferred credentials are claimed.</div>
+      <div class="gate-principle-mini"><strong>3. Transparent Process</strong> — Every client knows exactly how their report is made.</div>
+      <div class="gate-principle-mini"><strong>4. Worker First</strong> — The ultimate beneficiary is the person on site.</div>
+      <div class="gate-principle-mini"><strong>5. Accurate Attribution</strong> — Frameworks are referenced, not claimed as endorsements.</div>
+      <div class="gate-principle-mini"><strong>6. Sustainable Before Scalable</strong> — We deliver what we promise. Nothing more yet.</div>
+      <div class="gate-principle-mini"><strong>7. Open Access for Society</strong> — The COS™ Methodology is free. Forever.</div>
+    </div>
+    <a href="#ethics" class="gate-link" onclick="document.getElementById('ethics-gate').classList.add('dismissed');setTimeout(()=>{document.getElementById('ethics-gate').style.display='none';},500);return true;">
+      READ THE FULL COS™ CODE OF ETHICS ON THIS PAGE →
+    </a>
+    <div class="gate-checkbox-row" onclick="toggleGate()">
+      <input type="checkbox" class="gate-checkbox" id="gate-check">
+      <label class="gate-checkbox-label" for="gate-check">
+        I have read and understood the COS™ Code of Ethics. I acknowledge that 
+        <strong>professional ethics is not optional</strong> — in construction, in compliance, 
+        and in every field where human safety depends on honest documentation. 
+        I support this mission.
+      </label>
+    </div>
+    <button id="gate-proceed" disabled onclick="proceedGate()">
+      ▶ &nbsp; I ACKNOWLEDGE — ENTER THE SITE
+    </button>
+    <div class="gate-timestamp" id="gate-ts">
+      COS™ Methodology — DOI: 10.5281/zenodo.18802971 · CC BY 4.0 · CM Academy, Kathmandu, Nepal
+    </div>
+  </div>
+</div>
+
+
 <header>
   <div class="logo">CM <span>ACADEMY</span></div>
   <nav>
@@ -318,6 +571,7 @@ footer {
     <a href="#how">How It Works</a>
     <a href="#markets">Markets</a>
     <a href="#about">About</a>
+    <a href="#ethics">Ethics</a>
     <a href="#contact" class="nav-cta btn">Get a Report</a>
   </nav>
 </header>
@@ -339,7 +593,7 @@ footer {
     <span class="pill pill-c">C — Compliance</span>
     <span class="pill pill-o">O — Oversight</span>
     <span class="pill pill-s">S — Sustainability</span>
-    <span class="pill pill-x">ADB · World Bank · GCC · CSRD · OSHA</span>
+    <span class="pill pill-x">ADB · World Bank · GCC · CSRD · ILO</span>
   </div>
   <div class="hero-btns">
     <a href="#contact" class="btn btn-primary">▶ Request a Report</a>
@@ -392,12 +646,12 @@ footer {
 <section id="reports">
   <div class="section-eyebrow">The Report Suite</div>
   <h2>Six mandatory report types.<br>All generated in 24 hours.</h2>
-  <p class="section-sub">Fill a plain-language data form. We generate a professionally branded, CMAA-anchored, DOI-cited compliance report and deliver it to your inbox.</p>
+  <p class="section-sub">Fill a plain-language data form. We generate a professionally branded, CCM-reviewed, DOI-cited compliance report and deliver it to your inbox.</p>
   <div class="reports-grid">
     <div class="report-card">
       <div class="card-num">01 / 06</div>
       <div class="card-title">QA/QC Site Audit Report</div>
-      <div class="card-desc">Material compliance, inspection records, NCR status. ISO 9001 · FIDIC · CMAA. Required before every payment certificate.</div>
+      <div class="card-desc">Material compliance, inspection records, NCR status. Referenced against ISO 9001, FIDIC, and CMAA Body of Knowledge. Required before every payment certificate.</div>
       <div class="card-price">$500 – $1,500</div>
     </div>
     <div class="report-card">
@@ -450,7 +704,7 @@ footer {
       <div class="step-num">02</div>
       <div>
         <div class="step-title">Email the completed form to CM Academy</div>
-        <div class="step-desc">Send to cm.academy.consulting@gmail.com with any supporting documents. We confirm receipt within 2 hours.</div>
+        <div class="step-desc">Send to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d0de9dd2d0d2d7d6deca9dd0dcddc0c6dfc7daddd4f3d4ded2dadf9dd0dcde">[email&#160;protected]</a> with any supporting documents. We confirm receipt within 2 hours.</div>
         <div class="step-time">2 minutes</div>
       </div>
     </div>
@@ -465,7 +719,7 @@ footer {
     <div class="step">
       <div class="step-num">04</div>
       <div>
-        <div class="step-title">Receive your report. Submit. Get approved.</div>
+        <div class="step-title">Receive your report. Submit to your authority.</div>
         <div class="step-desc">We email your branded report within 24 hours. You submit to your donor, authority, or client. Move forward.</div>
         <div class="step-time">Within 24 hours of receiving your data</div>
       </div>
@@ -488,10 +742,7 @@ footer {
       <div style="border:1px solid var(--border);padding:2rem;background:rgba(31,56,100,0.15);">
         <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">What the automation does</div>
         <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
-          The COS™ Report Generator is a structured AI-assisted system built on published international frameworks —
-          ADB Safeguard Policy Statement, IFC Performance Standards, ISO 45001, GRI Standards, and CMAA Body of Knowledge.
-          When you submit your project data, the system structures it into a professionally formatted compliance report
-          in minutes — consistent, reproducible, and framework-aligned every time.
+          The COS™ Report Generator structures your project data against the requirements of publicly available international frameworks — including the ADB Safeguard Policy Statement, IFC Performance Standards, ISO 45001, and GRI Standards. Each report maps findings to the specific clauses of these frameworks. These are public documents; CM Academy references them as published standards. CM Academy is not an endorsed or approved partner of any issuing organisation. Reports prepared by a CCM apply the CMAA Body of Knowledge in professional practice.
         </p>
       </div>
 
@@ -501,7 +752,7 @@ footer {
           Every report is personally reviewed by Susil Bhandari, CCM (CMAA-USA) — 22 years of field experience
           across Nepal, Qatar, and Bahrain — before it reaches you. The review checks that findings are accurate,
           scores are justified, and the report reflects what is actually happening on site.
-          The CCM review is what makes the report trustworthy — and certifiable.
+          The CCM review is what makes the report trustworthy — and professionally accountable.
         </p>
       </div>
 
@@ -510,7 +761,7 @@ footer {
         <p style="font-size:0.85rem;color:var(--grey);line-height:1.7;">
           A traditional compliance consultant charges $5,000–$15,000 and takes 3 weeks.
           They also use templates and standard frameworks — just without telling you.
-          Our approach is identical in quality, transparent in process, and delivered in 24 hours
+          Our approach is rigorous in process, transparent in method, and delivered in 24 hours
           at a sustainable fee that makes mandatory reporting accessible to every project — not just large ones.
         </p>
       </div>
@@ -536,6 +787,210 @@ footer {
     </div>
   </div>
 </section>
+
+
+<!-- ── ETHICS SECTION ─────────────────────────────────────────────── -->
+<section id="ethics" class="ethics-banner">
+  <div class="section-eyebrow">Ethics First — Always</div>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:0.5rem;line-height:1.15;">
+    The standard we hold ourselves to.<br><em style="color:var(--gold);">Publicly. Permanently.</em>
+  </h2>
+  <p style="font-size:1rem;color:var(--grey);max-width:640px;line-height:1.75;margin-bottom:3.5rem;">
+    Every practitioner, client, institution, and society deserves to know the principles that govern this work — 
+    before any service is requested, before any report is signed, before any fee is discussed.
+    These principles are not a marketing statement. They are the operating rules of CM Academy and the COS™ Methodology.
+    They are published here so the world can hold us to them.
+  </p>
+
+  <!-- SLOGANS -->
+  <div class="ethics-slogans">
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 01</div>
+      <div class="slogan-text">"A report that lies to protect a project kills the worker it was meant to protect."</div>
+      <div class="slogan-para">Compliance documentation that reflects desired outcomes rather than site reality is not compliance — it is risk transferred silently onto the people with the least power to protect themselves. Every COS™ score is derived from data. Every finding is reported as found.</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 02</div>
+      <div class="slogan-text">"Credentials are earned. Endorsements are granted. Neither can be borrowed."</div>
+      <div class="slogan-para">Professional credibility is built one verifiable claim at a time. CM Academy states only what has been formally conferred — and nothing more. We do not imply institutional approval we do not have. We do not claim a credential before the issuing body authorises it. This discipline is not modesty. It is the foundation of trust.</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 03</div>
+      <div class="slogan-text">"Transparency is not a feature of ethical practice. It is the definition of it."</div>
+      <div class="slogan-para">Every client of CM Academy is told exactly how their report is produced — what the AI-assisted system does, what the CCM review does, and what the client's own data determines. There is no hidden process. There is no method we would be embarrassed to explain. If we would not publish it, we do not do it.</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 04</div>
+      <div class="slogan-text">"The construction site is where ethics is tested — not in the office where the report is written."</div>
+      <div class="slogan-para">Twenty-two years of field experience across Nepal, Qatar, and Bahrain — watching compliance reports filed on projects where workers were still getting hurt. The COS™ Methodology was built to close that gap. Not to make the paperwork look better. To make the site safer.</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 05</div>
+      <div class="slogan-text">"Knowledge that costs nothing to share costs everything to withhold."</div>
+      <div class="slogan-para">The COS™ Methodology is published open-access on Zenodo under CC BY 4.0. Any engineer, student, contractor, or government agency anywhere in the world can study, apply, and build on it freely. Commercial services sustain the practice. The knowledge belongs to society.</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-num">Principle in Practice · 06</div>
+      <div class="slogan-text">"An evergreen professional grows from ethics. A seasonal one wilts without clients."</div>
+      <div class="slogan-para">Professional reputation built on honest credentials, transparent process, and real results compounds over decades. CM Academy exists to build that kind of practice — not one dependent on favourable conditions, low scrutiny, or clients who do not ask questions. We welcome scrutiny. We invite it.</div>
+    </div>
+  </div>
+
+  <!-- SEVEN PRINCIPLES -->
+  <div class="ethics-declaration">
+    <div class="section-eyebrow">The COS™ Code of Ethics</div>
+    <h2>Seven principles.<br>Non-negotiable. Always.</h2>
+    <p style="font-size:0.9rem;color:var(--grey);line-height:1.75;max-width:680px;margin-bottom:2rem;">
+      These principles govern every report produced, every claim made, every credential displayed, 
+      and every relationship CM Academy holds with clients, institutions, and the public.
+      They are derived from the CMAA Code of Ethics, the COS™ Methodology White Paper 
+      (DOI: 10.5281/zenodo.18802971), and 22 years of field practice.
+    </p>
+  </div>
+  <div class="ethics-principles">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <div class="principle-title">Truth Before Approval</div>
+        <div class="principle-body">Every COS™ report reflects what is actually happening on site. Scores are derived from data provided by the project team — not from what any donor, authority, or client wants to see. A project that scores 41% on Oversight is delivered as 41%. Adjusting scores to secure approval, satisfy a client, or avoid a difficult conversation is a violation of this code and grounds for immediate termination of service.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <div class="principle-title">Credential Integrity</div>
+        <div class="principle-body">No credential is claimed before it is formally conferred by the issuing body. No organisational endorsement is implied without written authorisation from that organisation. Every qualification stated publicly is exactly what has been earned and verified — nothing more, nothing less. This applies to every certificate, every badge, every professional title, and every institutional affiliation displayed on any CM Academy platform.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <div class="principle-title">Transparent Process</div>
+        <div class="principle-body">Every client is informed clearly and in advance how their report is produced — including the role of AI-assisted structured generation and the role of CCM human professional review. No process is concealed. No method is misrepresented. The transparency section of every CM Academy communication exists not to manage perception but to give clients the information they need to make an informed decision.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <div class="principle-title">Worker First</div>
+        <div class="principle-body">The ultimate beneficiary of every COS™ compliance report is not the donor, the PMC, the contractor, or the executing agency — it is the worker on site. One construction worker dies every ten minutes globally, often on projects with active compliance documentation. COS™ reports are produced to protect real people in real conditions. Any engagement that asks CM Academy to prioritise approval over worker safety is declined.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <div class="principle-title">Accurate Attribution</div>
+        <div class="principle-body">International standards and frameworks — ADB Safeguard Policy Statement, IFC Performance Standards, ISO 45001, GRI Standards, CMAA Body of Knowledge — are referenced as the publicly available documents they are. CM Academy is not an endorsed, approved, or certified partner of any issuing organisation. These frameworks are referenced because they represent the best available professional consensus. Attribution is always accurate, always honest, and always complete.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <div class="principle-title">Sustainable Before Scalable</div>
+        <div class="principle-body">CM Academy does not promise services it cannot yet deliver, claim markets it has not yet served, or project income it has not yet earned. Each phase of this practice is built only after the previous phase is generating honest, sustainable results. This discipline protects clients from overpromising, protects the profession from inflated expectations, and protects the COS™ brand from the credibility loss that follows when ambition outpaces execution.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <div class="principle-title">Open Access for Society</div>
+        <div class="principle-body">The COS™ Methodology is published permanently and freely on Zenodo (DOI: 10.5281/zenodo.18802971) under Creative Commons CC BY 4.0. Any person, institution, government, or organisation anywhere in the world may study, apply, adapt, and build upon it without cost or permission. Commercial compliance report services fund the practice. The knowledge behind them belongs to the profession and to society. That is not a business model. It is a responsibility.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLIC AUDIT LOG -->
+  <div class="audit-log">
+    <div class="section-eyebrow">Public Self-Audit — CM Academy Website</div>
+    <h2 style="font-size:clamp(1.5rem,2.5vw,2.2rem);margin-bottom:0.8rem;">
+      We audited ourselves.<br>Publicly. Here is what we found.
+    </h2>
+    <p style="font-size:0.88rem;color:var(--grey);line-height:1.75;max-width:680px;margin-bottom:1.5rem;">
+      Before publishing this website, every claim, every phrase, and every implication was reviewed against the COS™ Code of Ethics above. 
+      Seven issues were found. All seven were corrected before going live. 
+      This log is published so visitors can see exactly what was changed and why — 
+      because a framework that teaches ethics must demonstrate it first.
+    </p>
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Original Phrase</th>
+          <th>Ethical Issue</th>
+          <th>Corrected To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">01</td>
+          <td><span class="audit-was">CMAA-anchored report</span></td>
+          <td>Implies CMAA reviewed or endorsed the report. They have not.</td>
+          <td><span class="audit-fixed">CCM-reviewed report</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">02</td>
+          <td><span class="audit-was">ISO 9001 · FIDIC · CMAA</span></td>
+          <td>Listing CMAA as a badge implies institutional certification.</td>
+          <td><span class="audit-fixed">Referenced against ISO 9001, FIDIC, and CMAA Body of Knowledge</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">03</td>
+          <td><span class="audit-was">built on published international frameworks</span></td>
+          <td>Implies these organisations contributed to or approved the system.</td>
+          <td><span class="audit-fixed">structures project data against publicly available frameworks — not an endorsed partner of any issuing organisation</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">04</td>
+          <td><span class="audit-was">makes the report certifiable</span></td>
+          <td>Implies a certification process exists and has been applied.</td>
+          <td><span class="audit-fixed">makes the report professionally accountable</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">05</td>
+          <td><span class="audit-was">identical in quality to traditional consultants</span></td>
+          <td>Unverifiable comparative claim with zero completed client reports.</td>
+          <td><span class="audit-fixed">rigorous in process, transparent in method</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">06</td>
+          <td><span class="audit-was">Submit. Get approved.</span></td>
+          <td>Implies CM Academy guarantees donor or regulatory approval.</td>
+          <td><span class="audit-fixed">Submit to your authority.</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;">07</td>
+          <td><span class="audit-was">GCC · CSRD · OSHA</span></td>
+          <td>OSHA is US federal only. CM Academy does not produce OSHA reports.</td>
+          <td><span class="audit-fixed">GCC · CSRD · ILO</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.25);margin-top:1rem;letter-spacing:0.06em;">
+      Audit completed: March 2026 · Auditor: Susil Bhandari, CCM · Methodology: COS™ Code of Ethics v1.0 · DOI: 10.5281/zenodo.18802971
+    </p>
+  </div>
+
+  <!-- CALL TO SOCIETY -->
+  <div style="max-width:820px;padding:2.5rem;border:1px solid var(--border);background:rgba(201,168,76,0.04);">
+    <div class="section-eyebrow">A Call to the Profession</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--white);line-height:1.6;margin-bottom:1rem;">
+      "Every practitioner who has ever signed a compliance report that did not reflect reality 
+      knows the weight of that decision. We are not here to judge that history. 
+      We are here to make a different future possible."
+    </p>
+    <p style="font-size:0.85rem;color:var(--grey);line-height:1.75;margin-bottom:1.5rem;">
+      The COS™ Methodology is offered freely to the global construction profession — not as a product, but as a contribution.
+      If you are an engineer, a compliance officer, a project manager, or a student who believes 
+      that professional ethics is not optional — you are invited to study it, apply it, and build on it.
+      The framework belongs to you. Use it to make the sites where people work safer.
+      That is the only measure of success that matters.
+    </p>
+    <a href="https://zenodo.org/records/18802971" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-decoration:none;border:1px solid rgba(201,168,76,0.4);padding:0.6rem 1.2rem;transition:all 0.2s;display:inline-block;" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='transparent'">
+      READ THE COS™ WHITE PAPER — FREE →
+    </a>
+  </div>
+</section>
+
 
 <!-- ── MARKETS ─────────────────────────────────────────────────────── -->
 <section id="markets">
@@ -620,7 +1075,7 @@ footer {
     </form>
 
     <div id="form-success">
-      <p>✓ Thank you. We will respond within 2 hours at cm.academy.consulting@gmail.com</p>
+      <p>✓ Thank you. We will respond within 2 hours at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516185b1416141110180c5b161a1b060019011c1b12351218141c195b161a18">[email&#160;protected]</a></p>
       <p style="margin-top:0.5rem;color:rgba(255,255,255,0.5)">While you wait — download the free COS™ Data Collection Kit to start preparing your project information.</p>
     </div>
   </div>
@@ -668,7 +1123,7 @@ footer {
     <div class="footer-name">Susil Bhandari, CCM</div>
     <div class="footer-cred">
       Founder, CM Academy & NeoPlan Consult Pvt. Ltd. · Kathmandu, Nepal<br>
-      cm.academy.consulting@gmail.com · linkedin.com/in/ccm-susil-bhandari<br>
+      <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="187b7536797b797c7d7561367b77766b6d746c71767f587f75797174367b7775">[email&#160;protected]</a> · linkedin.com/in/ccm-susil-bhandari<br>
       © 2026 Complete Construction Management Developers Pvt. Ltd. (Reg. 275143/078/079)
     </div>
   </div>
@@ -715,7 +1170,48 @@ footer {
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// ── ETHICS GATE ───────────────────────────────────────────────────
+function toggleGate() {
+  const cb = document.getElementById('gate-check');
+  cb.checked = !cb.checked;
+  const btn = document.getElementById('gate-proceed');
+  if (cb.checked) {
+    btn.classList.add('ready');
+    btn.disabled = false;
+    const now = new Date();
+    document.getElementById('gate-ts').textContent =
+      'Acknowledged: ' + now.toUTCString() + ' · COS™ DOI: 10.5281/zenodo.18802971';
+  } else {
+    btn.classList.remove('ready');
+    btn.disabled = true;
+    document.getElementById('gate-ts').textContent =
+      'COS™ Methodology — DOI: 10.5281/zenodo.18802971 · CC BY 4.0 · CM Academy, Kathmandu, Nepal';
+  }
+}
+function proceedGate() {
+  const gate = document.getElementById('ethics-gate');
+  gate.classList.add('dismissed');
+  setTimeout(() => { gate.style.display = 'none'; }, 500);
+  // Log acknowledgement timestamp
+  const ts = new Date().toISOString();
+  try {
+    const acks = JSON.parse(localStorage.getItem('cos_ethics_ack') || '[]');
+    acks.push({ ts, page: window.location.href });
+    localStorage.setItem('cos_ethics_ack', JSON.stringify(acks));
+  } catch(e) {}
+}
+// Check if already acknowledged in this session
+window.addEventListener('DOMContentLoaded', () => {
+  const ts = document.getElementById('gate-ts');
+  if (ts) {
+    const now = new Date();
+    ts.textContent = 'Visited: ' + now.toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) +
+      ' · COS™ DOI: 10.5281/zenodo.18802971 · CC BY 4.0';
+  }
+});
+
 // ── CHAT LOGIC ────────────────────────────────────────────────────
 const RESPONSES = {
   'which report': `Great question. Here's a quick guide:\n\n• QA/QC audit → for payment certificates and inspection records\n• OSH report → monthly safety compliance (GCC, South Asia)\n• NCR Register → after a non-conformance, before work restarts\n• Governance Assessment → ADB/World Bank governance review\n• ESG Report → for lenders, donors, Singapore/EU disclosure\n• Donor Readiness → before ADB/WB supervision mission\n\nTell me about your project and I'll advise the right type.`,
@@ -812,17 +1308,4 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
   // Store lead locally for tracking
   const leads = JSON.parse(localStorage.getItem('cos_leads') || '[]');
   leads.push({ name, org, email, country, report, desc, date: new Date().toISOString() });
-  localStorage.setItem('cos_leads', JSON.stringify(leads));
-});
-
-// ── SMOOTH SCROLL ─────────────────────────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-</script>
-</body>
-</html>
+  localStorage.setItem('cos
