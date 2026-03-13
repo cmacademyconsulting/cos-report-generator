@@ -78,4 +78,3 @@ Reg. No. 275143/078/079 · Kathmandu, Nepal
 COS™ Methodology — CC BY 4.0
 ```
 
-
